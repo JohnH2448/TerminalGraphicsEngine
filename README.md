@@ -8,4 +8,4 @@ containing rgb values for every pixel
 indexes to 2D coordinates if needed
 
 Note: Attached basic engine and an example game
-Any way to support higher pixels/s
+Any way to support higher pixels/s?
