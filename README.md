@@ -1,4 +1,4 @@
-Basic rendering engine
+Terminal RGB rendering engine
 - customizable dimensions
 - customizable framerate
 - pixel by pixel adjustment
