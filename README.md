@@ -1,4 +1,4 @@
-# Terminal OLED Emulator
+# Terminal Graphics Engine
 ## Create and render games in a terminal
 - Customizable dimensions
 - Customizable framerate
