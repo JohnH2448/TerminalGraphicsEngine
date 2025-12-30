@@ -1,6 +1,5 @@
 # Terminal Graphics Engine
 ## Create and render games in a terminal
-- Customizable dimensions
-- Customizable framerate
-- Pixel by pixel adjustment
+- Probably the greatest project ever made
+- Build a game in this to impress your python teacher
 - Exposes stdout bug?
