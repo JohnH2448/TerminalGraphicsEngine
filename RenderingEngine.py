@@ -111,7 +111,7 @@ def Render_Frame():
         frameExecute=0
 
 # Put Active Game Logic Here
-while gameOn==True:
+while simulationOn==True:
 
     # Generates Border
     j=0
@@ -124,15 +124,13 @@ while gameOn==True:
 
     # Code runs constantly, Render_Frame is only called (framerate) times a second
 
-    # If you add physics, create a seperate constant physics FPS so that they dont speed up based on framerate
-
     # Call update_render(x,y,pixel) to generate a pixel at that location. Bottom left corner is 0,0. Must input
-    # integers for x and y. Pixel is [r,g,b] where they are all integers. The order from top to bottom update_render
-    # is called defines layer order. Furthest down update_render gets rendered on top. Reverse_render gives an x and
-    # y coordinate for a given index of (display). To do movement, render pixels at a variable and then move the
-    # variable to move where the pixels are rendered. 
+    # integers for "x" and "y". For "pixel", input integers [r,g,b] in a tuple. The order from top to bottom update_render
+    # is called defines layer order. Further down render calls overwrite higher ones. Reverse_render gives an x and
+    # y coordinate for a given index of (display). 
 
     Render_Frame()
     calculateFPS()
+
 
 
