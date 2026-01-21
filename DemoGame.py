@@ -1,12 +1,3 @@
-# AI statement: Statues and Pillars are AI generated. The AI simply wrote pixel locations using my render function. This is doable by hand
-# however I am no artist and it's time consuming to do manually. The formula for update_render() also used math help from AI, although I wrote it.
-
-# I put more effort into this game than required because I do need a good EGR grade for my scholarship! I'm new to programming
-# as of this semester, but I wanted to try slightly more advanced concepts. I hope you enjoy the game!
-
-# This engine can support any game that you can simulate physics for. Feel free to mess around with the engine, I'll attach a blank version
-# with no game code in case you want to try it yourself. 
-
 import random
 import time
 import sys
@@ -239,9 +230,6 @@ while gameOn==True:
     j=0
     for i in display:
         x,y=reverse_render(j)
-        # day night cycle math was more complex than I wanted, what this does is essentially makes a unit of y so that at the
-        # top of the display y=1 and and the bottom y=0, then the multiple of that is = to the weight I want it to take up of
-        # the total rgb calculation. Functionally controls how harsh the gradient is and integrates that with "Dark"
         sky1 = round(135-(((y/(displayY))*50)+84*Dark))
         sky2 = round(206-(((y/(displayY))*50)+155*Dark))
         sky3 = round(235-(((y/(displayY))*50)+184*Dark))
@@ -682,6 +670,7 @@ while gameOn==True:
             update_render(x,y,[255,0,0])
         frameExecute=1
         Render_Frame()
+
 
 
 
