@@ -1,3 +1,12 @@
+# AI statement: Statues and Pillars are AI generated. The AI simply wrote pixel locations using my render function. This is doable by hand
+# however I am no artist and it's time consuming to do manually. The formula for update_render() also used math help from AI, although I wrote it.
+
+# I put more effort into this game than required because I do need a good EGR grade for my scholarship! I'm new to programming
+# as of this semester, but I wanted to try slightly more advanced concepts. I hope you enjoy the game!
+
+# This engine can support any game that you can simulate physics for. Feel free to mess around with the engine, I'll attach a blank version
+# with no game code in case you want to try it yourself. 
+
 import random
 import time
 import sys
@@ -71,6 +80,25 @@ def calculatePFPS():
         Ptime1=time.perf_counter()
         physicsExecute=1
 
+# Line Rasterizer
+def line(x1, y1, x2, y2, pixel):
+    deltax = x2 - x1
+    deltay = y2 - y1
+    p = 2*deltay - deltax
+    currentx = x1
+    currenty = y1
+    i = currentx
+    while i <= x2:
+        update_render(currentx, currenty, pixel)
+        if p < 0:
+            currentx = currentx + 1
+            p = p + 2*deltay
+        else:
+            currentx = currentx + 1
+            currenty = currenty + 1
+            p = p+ 2*deltay - 2*deltax
+        i = i + 1
+        
 # Rendering Translator
 def update_render(x_coord, y_coord, pixel):
     if 0 <= x_coord < displayX and 0 <= y_coord < displayY:
@@ -211,6 +239,9 @@ while gameOn==True:
     j=0
     for i in display:
         x,y=reverse_render(j)
+        # day night cycle math was more complex than I wanted, what this does is essentially makes a unit of y so that at the
+        # top of the display y=1 and and the bottom y=0, then the multiple of that is = to the weight I want it to take up of
+        # the total rgb calculation. Functionally controls how harsh the gradient is and integrates that with "Dark"
         sky1 = round(135-(((y/(displayY))*50)+84*Dark))
         sky2 = round(206-(((y/(displayY))*50)+155*Dark))
         sky3 = round(235-(((y/(displayY))*50)+184*Dark))
@@ -470,7 +501,7 @@ while gameOn==True:
         for dx in range(-2, 3, 1):
             update_render(decorationX + dx, decorationY - 3, dark_stone_color if dx % 2 == 0 else stone_color)
 
-    # Ocean
+    # Oceans
     if fakeVariable==True:
         oceanX=round(150-centerX)
         oceanY=1
@@ -575,7 +606,7 @@ while gameOn==True:
             health=health-1
     
     # Cheat
-    if keyboard.is_pressed('k'):
+    if keyboard.is_pressed('p'):
         EnemyAlive=False
         ressurect=0
 
@@ -614,6 +645,9 @@ while gameOn==True:
         update_render(5+10, displayY-4, [255,0,0])
         update_render(4+10, displayY-6, [255,0,0])
     
+    # Line Test
+    # line(2, 2, 32, 18, [0, 0, 0])
+
     # Generates Border
     j=0
     for i in display:
@@ -648,7 +682,6 @@ while gameOn==True:
             update_render(x,y,[255,0,0])
         frameExecute=1
         Render_Frame()
-
 
 
 
