@@ -5,20 +5,8 @@ import keyboard
 import math
 
 # Startup
-Dev=input("Dev Code? (Press Enter)")
-if Dev=="1":
-    cheats=True
-else:
-    cheats=False
 validate=0
 if cheats==False and Dev!="2":
-    for i in "Install Keyboard Commands ('pip install keyboard' in Teminal)0Controls:0A = Left0D = Right0Space = Jump0":
-            if i=="0":
-                print("")
-            else:
-                print(i, end="", flush=True)
-                time.sleep(0.02)
-    input("(Press Enter)")
     for i in "Fullscreen Only0Performance is IDE Dependent0Reccomended FOV is 6Ox3O0Recommended FPS is 2O0":
             if i=="0":
                 print("")
@@ -145,6 +133,7 @@ while simulationOn==True:
 
     Render_Frame()
     calculateFPS()
+
 
 
 
