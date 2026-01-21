@@ -49,7 +49,7 @@ else:
 
 # Modifiables
 idle=True
-gameOn=True
+simulationOn=True
 fakeVariable=True
 
 # Frame Rate Calculator
@@ -64,7 +64,26 @@ def calculateFPS():
     if (1/framerate) <= time3:
         time1=time.perf_counter()
         frameExecute=1
-
+        
+# Line Rasterizer
+def line(x1, y1, x2, y2, pixel):
+    deltax = x2 - x1
+    deltay = y2 - y1
+    p = 2*deltay - deltax
+    currentx = x1
+    currenty = y1
+    i = currentx
+    while i <= x2:
+        update_render(currentx, currenty, pixel)
+        if p < 0:
+            currentx = currentx + 1
+            p = p + 2*deltay
+        else:
+            currentx = currentx + 1
+            currenty = currenty + 1
+            p = p+ 2*deltay - 2*deltax
+        i = i + 1
+        
 # Rendering Translator
 def update_render(x_coord, y_coord, pixel):
     if 0 <= x_coord < displayX and 0 <= y_coord < displayY:
@@ -122,15 +141,11 @@ while simulationOn==True:
             update_render(x,y,pixel)
         j=j+1
 
-    # Code runs constantly, Render_Frame is only called (framerate) times a second
-
-    # Call update_render(x,y,pixel) to generate a pixel at that location. Bottom left corner is 0,0. Must input
-    # integers for "x" and "y". For "pixel", input integers [r,g,b] in a tuple. The order from top to bottom update_render
-    # is called defines layer order. Further down render calls overwrite higher ones. Reverse_render gives an x and
-    # y coordinate for a given index of (display). 
+    # Put Active Game Logic Here
 
     Render_Frame()
     calculateFPS()
+
 
 
 
